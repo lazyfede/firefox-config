@@ -1,0 +1,229 @@
+/* ===== userContent.css - Customizations =====
+-- Firefox 98.0 - Gecko rv:98.0 / 20220208 -- FF
+-- Created by: DarthSteve : 09-Feb-2022 --
+-- Modified by: lazyfede
+-- Running on Firefox 137.0
+
+ The file can be used to apply a style to all web pages (content) you view.
+ Ie. let you change the way your browser displays web pages.
+ Rules without !important are overruled by author rules if the author sets any.
+ Rules with !important overrule author rules.
+
+- The file is located in your "<profile-dir>/chrome" directory.
+- Edit and save/copy it into this directory.
+
+- Instead of adding and deleting to userContent.css you can create a file
+ in your Profile/Chrome directory called, eg., "whatever.css" and fill it
+ with all the hacks you want.
+ At the very top of userContent.css, add the line:
+       @import url("whatever.css");
+ useful for trying out various preferences/settings CSS'es.
+
+============ */
+
+/* =-=-=-= GENERIC =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* Settings applied globally */
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+
+/* Transitons forced **
+* {
+  transition: all 0.3s 0s ease-in-out !important;
+}
+
+
+/*
+:root {
+   background-color: #FAFA00 !important; 
+   --newtab-background-color: #000000 !important;
+   --newtab-text-primary-color: #fafa00 !important;
+   color: #0000FA !imprtant;
+   padding-inline: 2em;
+   color-scheme: normal !important;   or light dark
+}
+*/
+
+
+/* Highlight Focus *
+*:focus {
+  opacity: 1 !important;
+  background: rgba(250, 240, 0, 0.25);
+}
+*/
+
+/* Highlight Hover *
+*:hover {
+  background: rgba(250, 240, 200, 0.25);
+}
+*/
+
+
+
+/* =-=-=-= LINK CURSOR =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* Change cursor to "crosshair" for links that open in new window -
+ This trick (will) change the mouse pointer when you hover it
+ over links that will open in a new window:
+*/
+:link[target="_blank"], :visited[target="_blank"],
+:link[target="_new"],   :visited[target="_new"] {
+  cursor: crosshair;
+}
+
+
+/* Change the cursor for JavaScript links -
+ This change the mouse pointer when you hover it
+ over links that will perform a JavaScript command.
+*/
+a[href^="javascript:"] {
+  /* Yellow-ish *
+  color: #F0FA00 !important;
+  background: #0A0A0A !important; */
+  cursor: -moz-grab;
+}
+
+/*
+a:hover {
+  color: #FAFAFA !important;
+  background: #F00000 !important;
+}
+*/
+
+/* Highlight some links which would pop up a new window: **
+:link:hover[target="_blank"],:visited:hover[target="_blank"] {
+  color: white !important; background: red !important;
+}
+:link:hover[target="_new"],:visited:hover[target="_new"] {
+  color: white !important; background: red !important;
+}
+*/
+
+/* Always underline text links **
+:link, :visited {
+  text-decoration: underline !important;
+}
+*/
+
+
+/* Add '[pdf]' next to links to PDF files **
+a[href$=".pdf"]:after {
+  font-size: smaller;
+  content: " [pdf]";
+}
+*/
+
+
+/* =-=-=-= DIRECTORY LISTING =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/*
+@-moz-document regexp("^[file:///].*[^(html)]$") {
+*/
+  :root {
+    background-color: #FAFA00!important
+  }
+/*  body {
+    border-color: #FAFA00 !important;
+    background-color: #00FAFA !important;
+    color: #00A000 !important;
+  }
+  h1 {
+    border-color: #A000A0 !important
+  }
+*/
+
+  body > table > tbody > tr:hover {
+    outline-color: #00FA00 !important;
+    background-color: #%FAFA00 !important;
+  }
+
+  .dir, .symlink, .up {
+    color: #FA0000 !important;
+  }
+  .file {
+    color: #A0A0A0 !important;
+  }
+/*
+}
+*/
+
+
+/* =-=-=-= MAIL / NEWS =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* Style the text that is used when composing messages in text mode */
+BODY[style*="width: 91ch"] {
+  font-size: 16px !important;
+/*  font-family: Verdana !important;
+  font-family: System !important; */
+}
+
+
+
+/* =-=-=-= SIGNATURE =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* To change the color of signature text */
+.moz-txt-sig, .moz-signature {
+  /* green */
+  color: #008000 !important;
+}
+
+/* To change the color/style of links in signatures */
+.moz-txt-sig > a, .moz-signature > a {
+  color: #FA0000 !important;
+  /* Remove this line if you don't want arial links */
+  font-style: normal !important;
+}
+
+/* Limit the height of the signature **
+ Make a scrollbar to appear, if more space is required.
+**
+.moz-txt-sig {
+  max-height: 20em;
+  overflow: auto;
+}
+*/
+
+
+/* ----- Blockquotes ---------- */
+/* Code to help you display different quote levels in different colors */
+
+blockquote[type=cite] {
+  border-color: gray !important;
+  /* black */
+  color: #000000 !important;
+}
+
+blockquote[type=cite] blockquote {
+  border-color: gray !important;
+  /* gray dark */
+  color: #707070 !important;
+}
+
+blockquote[type=cite] blockquote blockquote {
+  border-color: gray !important;
+  /* gray light */
+  color: #A0A0A0 !important;
+}
+
+/* You get the pattern... Add more quote levels if you want.
+ But -DO NOT- forget to add the next line
+*/
+blockquote[type=cite] pre, blockquote[type=cite] div
+{ color: inherit !important; }
+
+
+
+/* =-=-=-= MISCELLANEA =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* Change the scrollbar width *
+scrollbar[orient="vertical"] scrollbarbutton,
+scrollbar[orient="vertical"] slider {
+  width: 14px !important;
+}
+*/
+
+
+
+
+
+/* ### EOF ### */

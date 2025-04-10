@@ -1,0 +1,380 @@
+/* ===== userChrome.css - Customizations =====
+-- Firefox 92.0 - Gecko rv:92.0 / 20210815 -- FF
+-- Created by: DarthSteve : 15-Aug-2021 --
+--
+
+-- Heavily customized by: LazyFede --
+-- Firefox 137.0b1
+-----
+ This can be used to customize the look of Mozilla's UI (User Interface).
+ You should consider using !important on rules which you want to
+ override default settings.
+
+- Your themes control the UI but you can tweak some things that
+  you don't particularly like in your theme.
+
+- The file is located in your "<profile-dir>/chrome" directory.
+- Edit and save/copy/move it into this directory.
+
+- You can create a new file, eg., "my_userChrome.css" and add own/custom code to it.
+  Load it with  @import url(./my_userChrome.css);
+-----
+
+
+=========== */
+
+/* ----- Do not remove the @namespace line -----
+   -- it's required for correct functioning --
+*/
+/* set default namespace to XUL */
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+
+/* =-=-=-= GENERAL =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= * */
+
+.titlebar-spacer[type="pre-tabs"], .titlebar-spacer[type="post-tabs"] {
+  width: 40px;
+  display: none !important;
+}
+
+/*--- ToolBar Order -- Change positions of Group ---*/
+/*
+#print-preview-toolbar,
+#printedit-toolbar,
+#titlebar {
+  -moz-box-ordinal-group: 0 !important;
+}
+#navigator-toolbox #toolbar-menubar {
+  -moz-box-ordinal-group: 1 !important;
+}
+
+/* navigation toolbar */
+
+#navigator-toolbox {
+  border-bottom: #000000 !important;
+}
+
+#navigator-toolbox #nav-bar {
+  -moz-box-ordinal-group: 2 !important;
+  background-color: #000000 !important;
+}
+/* bookmarks toolbar */
+#navigator-toolbox #PersonalToolbar {
+  -moz-box-ordinal-group: 3 !important;
+  background-color: #000000 !important;
+}
+/* 3rd party toolbars */
+#navigator-toolbox toolbar {
+  -moz-box-ordinal-group: 10 !important;
+}
+/* tabs toolbar */
+#navigator-toolbox #TabsToolbar {
+  -moz-box-ordinal-group: 100 !important;
+  background-color: #000000 !important;
+}
+
+#alltabs-button {
+    display: none !important;
+}
+
+
+/* toolbar order (end) */
+
+/*
+#TabsToolbar {
+  position: absolute !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  display: block !important;
+}
+*/
+
+/* END: navigator-toolbox toolbars */
+
+
+/*-- Menubar - menu hover --*/
+#main-menubar > menu {
+  -moz-appearance: none !important;
+  background-color: transparent !important;
+/*  font-weight: bold !important;   * or 700 */
+}
+#main-menubar > menu:-moz-any(:hover,[open],[_moz-menuactive]) {
+  background: #FA0000 !important;  /* Red */
+  color: #FAFAFA !important;       /* White */
+}
+
+:is(menupopup, panel):where([type=arrow]) {
+  --panel-background: black !important;
+}
+
+/* Hide line above navigation toolbar appearing in some cases *
+#main-window:not([tabsintitlebar]) #nav-bar,
+#main-window:not([tabsintitlebar]) #navigator-toolbox {
+  border-top: 0 !important;
+  box-shadow: unset !important;
+}
+*/
+
+/*
+#main-window:not([chromehidden*="toolbar"]) #navigator-toolbox {
+  padding-bottom: 1px !important;
+}
+
+#browser-bottombox {
+  margin-bottom: calc(2px + var(--tab-min-height_tnot)) !important;
+}
+
+#TabsToolbar {
+  position: fixed !important;
+}
+*/
+
+
+
+/*-- Change the font --
+  The setting effectively overrides the global GTK+ font preferences,
+  and does not affect webpages, only the user interface itself:
+***
+* {
+  font-family: "FONT_NAME";
+  font-size: 20pt !important;  /* all default font sizes 20 pt */
+}
+
+/* Menu items in particular 15 pt instead of the default size *
+menupopup > * {
+  font-size: 15pt !important;
+}
+*/
+
+/* Give the Location (URL) Bar a fixed-width font *
+#urlbar {
+  font-family: monospace !important;
+}
+*/
+
+
+/* =-=-=-= NAVIGATION-BAR =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* Set Navigation-bar height to 30px */
+#nav-bar { height: 30px !important; }
+
+#urlbar-background {
+  background-color: #000000 !important;
+}
+
+
+/* ----- LOCATION BAR (Address URL) -------------- */
+
+
+
+/* =-=-=-= BOOKMARK TOOLBAR (BT) - (ID. #Personal Toolbar 'PT') =-=-=-=-=-=
+
+ Note: Rules affecting icons on the PT do not apply to folder contents.
+ Those are governed by "Bookmarks menu" rules.
+*/
+
+/* Resize the height - Default: 29px */
+#personal-bookmarks {
+  min-height: 28px !important;
+  max-height: 28px !important;
+}
+
+/* Bookmark Toolbar: Hide Bookmark icons (as folders) */
+toolbarbutton.bookmark-item > .toolbarbutton-icon {
+  display: none !important;
+}
+
+/* Bookmarks toolbar: No dropmarkers -
+  or .bookmark-item > .toolbarbutton-menu-dropmarker
+*/
+.bookmark-item .toolbarbutton-menu-dropmarker {
+  display: none !important;
+}
+
+/* Bookmark Toolbar item folder text */
+.bookmark-item[type="menu"] > .toolbarbutton-text {
+  margin: 0px !important;
+  font-size: 10pt !important;
+  font-weight: bold !important;   /* or 700 */
+  color: #FAFA00 !important;      /* Yellow */
+  background-color: #000000 !important;  /* Black */
+}
+
+/* Bookmarks-toolbar item text: No spaces */
+/* .toolbarbutton.bookmark-item > .toolbarbutton-text ..or: */
+.bookmark-item .toolbarbutton-text
+{
+/*  margin-left: 0px !important;
+  margin-right: 0px !important; */
+  margin: 0px !important;
+  font-size: 9pt !important;
+  font-weight: bold !important;
+  color: #F0F0F0 !important;  /* white-ish */
+  background-color: #000000 !important;
+}
+
+/* Bookmark Toolbar: Remove Hover effects */
+.bookmark-item[type="menu"]:hover {
+  -moz-appearance: none !important;
+  margin: 1px !important;
+  color: #FAFA00 !important;  /* Yellow-ish */
+  background-color: #0000FA !important;  /* Blue-ish */
+}
+
+/* Bookmark item in Bookmark-folder on Toolbar */
+/* When hovering Hover on item: No (some) Hover effects */
+.bookmark-item:hover {
+  -moz-appearance: none !important;
+  margin: 1px !important;
+  color: #0000F0 !important;
+  background-color: #FAFA00 !important;
+/*  border: none !important;
+  opacity: .8 !important; */
+}
+/* No Hover on item */
+.bookmark-item {
+  -moz-appearance: none !important;
+  color: #00F0F0 !important;
+  margin: 1px !important;
+  background-color: #000000 !important;
+}
+
+
+
+/* Bookmark Toolbar: Remove item text Hover effects - Black on White --
+.bookmark-item:not[type="menu"]:hover {
+  -moz-appearance: none !important;
+  margin: 50px !important;
+  color: #000000 !important;
+  background-color: #FFFFFF !important;
+}  */
+
+/* Hover on folder item --
+.bookmark-item[container]:hover {
+  -moz-appearance: none !important;
+  border: none !important;
+  opacity: .8 !important;
+  color: #000000 !important;
+  background-color: #000000 !important;
+}
+*/
+
+
+/* =-=-=-= BOOKMARKS MENU =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+.toolbar-menupopup {
+  background-color: #000000 !important;
+  --panel-background: #000000 !important;
+}
+
+
+/*-- Bookmark menus sub-list --*/
+/* Hide the folder icons for Bookmark folders in Bookmarks menu */
+menu.bookmark-item > .menu-iconic-left {
+  display: none !important;
+}
+
+/* Hide normal bookmark icons (left) in the Bookmarks menu */
+menuitem.bookmark-item > .menu-iconic-left {
+  display: none !important;
+}
+
+/* Style the iconless Bookmark menu items (mimicking the BT styles)
+   bookmark folders in yellow-ish and bold */
+menu.bookmark-item {
+  color: #F0F000 !important;
+  font-weight: bold !important;   /* or bold=800 */
+}
+/* Style the normal Bookmarks menu items in white */
+menuitem.bookmark-item {
+  color: #F0F0F0 !important;
+  font-weight: bold !important; /* or normal=500 */
+  background-color: #000000 !important;
+}
+
+/* Hide the Bookmark menu "Open All in Tabs" menu item */
+menuitem[label="Open All in Tabs"], menuseparator[builder="end"]
+{ display: none !important; }
+
+
+/* Delete annoying gray borders in bookmarks menu */
+menupopup, panel {
+  --panel-border-color: #000000 !important;
+}
+
+/* Hide icons for Bookmark groups in Bookmarks menu **
+menuitem.bookmark-group > .menu-iconic-left {
+  display: none !important;
+}
+** Tab group bookmarks in green **
+menuitem.bookmark-group {
+  color: #009000 !important;
+  font-style: italic !important;
+}
+*/
+
+/* =-=-=-= TAB-BROWSER BAR =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/*--- TAB TEXT for Default/Active/Hovered/Unloaded Tabs (colors/shadow/weight/style) ---*/
+
+/*-- Default tab - text color *
+.tabbrowser-tab .tab-label {
+  color: #FAFAFA !important;  -- white --
+  font-weight: bold !important;
+ * text-shadow: 0px 1px 0px white, 0px 1px 4px white !important; *
+}
+*/
+
+/*-- Selected (Active) tab - text color */
+.tabbrowser-tab[selected] .tab-label {
+  color: #FAFA00 !important;  /* yellow-ish */
+  font-weight: bold !important;
+/* text-shadow: 0px 1px 0px white, 0px 1px 4px white !important;  */
+}
+
+/*-- Hovered tab - text color */
+.tabbrowser-tab:hover:not([selected]) .tab-label {
+  font-weight: bold !important;
+/* text-shadow: 0px 1px 0px white, 0px 1px 4px white !important; */
+}
+
+.tab-background {
+  border-radius: var(--tab-border-radius);
+  margin-block: var(--tab-block-margin);
+  min-height: var(--tab-min-height);
+  outline: var(--tab-outline);
+  outline-offset: var(--tab-outline-offset);
+
+  .tabbrowser-tab:hover > .tab-stack > &:not([selected], [multiselected]) {
+    background-color: #000000 !important;
+    outline-color: var(--tab-hover-outline-color);
+  }
+
+  &:is([selected], [multiselected]) {
+    background-color: #000000 !important;
+    box-shadow: var(--tab-selected-shadow);
+    outline-color: var(--tab-selected-outline-color);
+  }
+
+  &[multiselected] {
+    outline-color: var(--focus-outline-color);
+
+    &[selected] {
+      outline-width: 2px;
+      outline-offset: -2px;
+    }
+  }
+/* =-=-=-= MISCELLANEA =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+
+/* For "DOM Inspector" extension: Change text color for selected focused line */
+treechildren::-moz-tree-cell-text(selected, focus) {
+  color: #FAFAFA !important;   /* Default: #FFFFFF */
+  background-color: #FA0000 !important;
+
+}
+
+.outer-wrapper.only-search.no-sections.visible-logo {
+	background-color: #000000 !important;
+}
+
+/* ### EOF ### */
