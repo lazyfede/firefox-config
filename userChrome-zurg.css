@@ -2,9 +2,9 @@
 -- Firefox 92.0 - Gecko rv:92.0 / 20210815 -- FF
 -- Created by: DarthSteve : 15-Aug-2021 --
 --
-
+#####################################################################################
 -- Heavily customized by: LazyFede --
--- Firefox 137.0b1
+-- Firefox 142.0b4 : 29-Jul-2025 --
 -----
  This can be used to customize the look of Mozilla's UI (User Interface).
  You should consider using !important on rules which you want to
@@ -228,6 +228,7 @@ toolbarbutton.bookmark-item > .toolbarbutton-icon {
   margin: 1px !important;
   color: #0000F0 !important;
   background-color: #FAFA00 !important;
+  border-radius: 0px !important;
 /*  border: none !important;
   opacity: .8 !important; */
 }
@@ -278,7 +279,6 @@ menu.bookmark-item > .menu-iconic-left {
 menuitem.bookmark-item > .menu-iconic-left {
   display: none !important;
 }
-
 /* Style the iconless Bookmark menu items (mimicking the BT styles)
    bookmark folders in yellow-ish and bold */
 menu.bookmark-item {
@@ -300,6 +300,8 @@ menuitem[label="Open All in Tabs"], menuseparator[builder="end"]
 /* Delete annoying gray borders in bookmarks menu */
 menupopup, panel {
   --panel-border-color: #000000 !important;
+  --panel-background: #000000 !important;
+  --panel-border-radius: 0px !important;
 }
 
 /* Hide icons for Bookmark groups in Bookmarks menu **
@@ -312,6 +314,11 @@ menuitem.bookmark-group {
   font-style: italic !important;
 }
 */
+
+/* Kill bookmark icons in the Personal Toolbar */
+.menu-icon {
+  display: none !important;
+}
 
 /* =-=-=-= TAB-BROWSER BAR =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
@@ -337,33 +344,6 @@ menuitem.bookmark-group {
   font-weight: bold !important;
 /* text-shadow: 0px 1px 0px white, 0px 1px 4px white !important; */
 }
-
-.tab-background {
-  border-radius: var(--tab-border-radius);
-  margin-block: var(--tab-block-margin);
-  min-height: var(--tab-min-height);
-  outline: var(--tab-outline);
-  outline-offset: var(--tab-outline-offset);
-
-  .tabbrowser-tab:hover > .tab-stack > &:not([selected], [multiselected]) {
-    background-color: #000000 !important;
-    outline-color: var(--tab-hover-outline-color);
-  }
-
-  &:is([selected], [multiselected]) {
-    background-color: #000000 !important;
-    box-shadow: var(--tab-selected-shadow);
-    outline-color: var(--tab-selected-outline-color);
-  }
-
-  &[multiselected] {
-    outline-color: var(--focus-outline-color);
-
-    &[selected] {
-      outline-width: 2px;
-      outline-offset: -2px;
-    }
-  }
 /* =-=-=-= MISCELLANEA =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
 /* For "DOM Inspector" extension: Change text color for selected focused line */
