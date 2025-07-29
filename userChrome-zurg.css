@@ -344,6 +344,19 @@ menuitem.bookmark-group {
   font-weight: bold !important;
 /* text-shadow: 0px 1px 0px white, 0px 1px 4px white !important; */
 }
+
+
+
+
+.tab-background {
+
+ .tabbrowser-tab:hover > .tab-stack > &:not([selected], [multiselected]) {
+     background-color: #000000 !important;
+  }
+     &:is([selected], [multiselected]) {
+     background-color: #000000 !important;
+  }
+}
 /* =-=-=-= MISCELLANEA =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
 
 /* For "DOM Inspector" extension: Change text color for selected focused line */
